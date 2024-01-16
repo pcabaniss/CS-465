@@ -6,9 +6,17 @@ const logger = require('morgan');
 
 const indexRouter = require('./app_server/routes/index');
 const usersRouter = require('./app_server/routes/users');
-const usersRouter = require('./app_server/routes/travel');
+const travelRouter = require('./app_server/routes/travel');
+const roomsRouter = require('./app_server/routes/rooms');
+const newsRouter = require('./app_server/routes/news');
+const mealsRouter = require('./app_server/routes/meals');
+const contactRouter = require('./app_server/routes/contact');
+const aboutRouter = require('./app_server/routes/about');
+
 
 const app = express();
+var hbs = require('hbs');
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));
@@ -27,6 +35,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/travel', travelRouter);
+app.use('/rooms', roomsRouter);
+app.use('/news', newsRouter);
+app.use('/meals', mealsRouter);
+app.use('/contact', contactRouter);
+app.use('/about', aboutRouter);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
