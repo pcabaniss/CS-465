@@ -4,6 +4,7 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const hbs = require('hbs');
+require('./app_api/models/db');
 
 const indexRouter = require('./app_server/routes/index');
 const usersRouter = require('./app_server/routes/users');
@@ -13,6 +14,8 @@ const newsRouter = require('./app_server/routes/news');
 const mealsRouter = require('./app_server/routes/meals');
 const contactRouter = require('./app_server/routes/contact');
 const aboutRouter = require('./app_server/routes/about');
+
+const apiRouter = require('./app_api/routes/index');
 
 
 const app = express();
@@ -40,6 +43,7 @@ app.use('/news', newsRouter);
 app.use('/meals', mealsRouter);
 app.use('/contact', contactRouter);
 app.use('/about', aboutRouter);
+app.use('/api', apiRouter);
 
 
 // catch 404 and forward to error handler
